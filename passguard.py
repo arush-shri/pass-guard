@@ -84,7 +84,7 @@ def pass_cyp(passw):
 		index = (index + key)%len(alpha)
 		cip_pass = cip_pass + alpha[index]
 	cip_pass = cip_pass + passw[-5:-2].lower()
-	print ("Password: " + cip_pass)
+	print ("Secure Password: " + cip_pass)
 	return cip_pass
 
 def set_data ():
