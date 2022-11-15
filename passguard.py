@@ -83,7 +83,7 @@ def pass_cyp(passw):
 		index = alpha.find(l)
 		index = (index + key)%len(alpha)
 		cip_pass = cip_pass + alpha[index]
-	cip_pass = cip_pass + passw[-5:-2].lower()
+	cip_pass = cip_pass + "pg".lower()
 	print ("Secure Password: " + cip_pass)
 	return cip_pass
 
@@ -98,9 +98,9 @@ def set_data ():
 	print (colored("Would you like to store the password in a safe database ?", 'magenta'))
 	n = input("y/n ")
 	if (n == 'y' or n == 'Y'):
-		file_dec()
 		web = input("Enter site name: ")
 		uname = input("Enter username: ")
+		file_dec()
 		c.execute ("CREATE TABLE IF NOT EXISTS manager('site' VARCHAR(50), 'username' VARCHAR(50), 'password' VARCHAR(20));")
 		c.execute ("INSERT INTO manager (site, username, password) VALUES (?,?,?);", (web,uname,word))
 		conn.commit()
@@ -113,8 +113,8 @@ def set_data ():
 def get_data ():
 	global c
 	global conn
-	file_dec()
 	web = input ("Enter site name: ")
+	file_dec()
 	c.execute ("SELECT username FROM manager WHERE site = ?;", (web,))
 	user = c.fetchall()
 	if (len(user) == 0):
@@ -142,13 +142,13 @@ def get_data ():
 def upd_data():
 	global c
 	global conn
-	file_dec()
 	word = input("Enter password: ")
 	if (len(word) > 20 or len(word)<8):
 		print (colored("Enter password of length in between 8 and 20",''))
 		word = input("Enter password: ")
 	word = pass_cyp(word)
 	web = input ("Enter site name: ")
+	file_dec()
 	c.execute ("SELECT username FROM manager WHERE site = ?;", (web,))
 	user = c.fetchall()
 	if (len(user) == 0):
