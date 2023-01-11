@@ -11,4 +11,5 @@ Clone to the repository
 cd pass-guard
 python3 passguard.py
 ```
-    
+###Update
+I have made a major upgrade now you can generate password as well as pins using this program. Now you can setup password which program asks at beginning to verify your identity.
